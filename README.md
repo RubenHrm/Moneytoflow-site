@@ -1,2 +1,1 @@
-# Moneytoflow-site
-Let’s go 
+MoneyToFlows - full package with templates and MLM features.\nDeploy: push to GitHub and deploy using Dockerfile. Set env vars: ADMIN_EMAIL, ADMIN_PASSWORD, SUPPORT_EMAIL, SECRET_KEY, PORT (optional). Visit /init to create DB/admin.
