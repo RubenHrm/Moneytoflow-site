@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Demander un retrait</h3>
+<p>Vous avez {{ buyers }} filleuls acheteurs.</p>
+<form method="post" class="mx-auto" style="max-width:700px;">
+  <div class="mb-3">
+    <label>Fournisseur</label>
+    <select name="provider" class="form-control" id="provider_select">
+      {% for p in providers %}
+        <option value="{{ p }}">{{ p }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3"><input class="form-control" name="amount" placeholder="Montant en FCFA" required></div>
+  <div class="mb-3"><input class="form-control" name="mobile" placeholder="Numéro mobile (ex: +2426...)" ></div>
+  <div id="wu_fields" style="display:none">
+    <div class="mb-3"><input class="form-control" name="wu_name" placeholder="Nom complet pour Western Union"></div>
+    <div class="mb-3"><input class="form-control" name="wu_country" placeholder="Pays pour Western Union"></div>
+  </div>
+  <button class="btn btn-gold">Envoyer la demande</button>
+</form>
+<script>
+  const sel = document.getElementById('provider_select');
+  const wu = document.getElementById('wu_fields');
+  function toggleWU(){ wu.style.display = (sel.value === 'Western Union') ? 'block' : 'none'; }
+  sel.addEventListener('change', toggleWU);
+  toggleWU();
+</script>
+{% endblock %}

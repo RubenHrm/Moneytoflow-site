@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Mon tableau de bord</h2>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card p-3 mb-3">
+      <h5>Bonjour <strong>{{ user['username'] }}</strong></h5>
+      <p>Votre code : <strong>{{ user['ref_code'] }}</strong></p>
+      <p>Filleuls inscrits : <strong>{{ total_referrals }}</strong></p>
+      <p>Filleuls acheteurs : <strong>{{ buyers }}</strong></p>
+      <p>Commission actuelle : <strong>{{ (rate*100)|int }}%</strong></p>
+      <p>Montant disponible estimé : <strong>{{ amount }} FCFA</strong></p>
+    </div>
+    <div class="card p-3">
+      <label>Lien de parrainage</label>
+      <input class="form-control" readonly value="{{ ref_link }}">
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card p-3 mb-3">
+      <h5>Actions</h5>
+      <a class="btn btn-outline-dark me-2" href="{{ url_for('confirm_purchase') }}">Confirmer un achat</a>
+      <a class="btn btn-gold" href="{{ url_for('withdraw') }}">Demander un retrait</a>
+    </div>
+    <div class="card p-3">
+      <h6>Règles de commission</h6>
+      <ul>
+        <li>20% par défaut</li>
+        <li>30% à partir de 50 filleuls acheteurs</li>
+        <li>40% à partir de 100 filleuls acheteurs</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
